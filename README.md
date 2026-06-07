@@ -1,19 +1,14 @@
 # Student Dashboard Prototype
 
-This is my submission for the Student Dashboard intern task. It's built with Next.js (App Router), Tailwind CSS v4, Framer Motion, and Supabase.
+Hey! This is my submission for the Student Dashboard intern task. I built it using Next.js (App Router), Tailwind CSS v4, and Supabase.
 
-## Architecture & Logic
-I split the app strictly into Server and Client components. The main `page.tsx` is a Server Component that handles fetching the active courses directly from Supabase. I wrapped the data fetching in a React `<Suspense>` boundary to show a custom skeleton loader while the data loads.
+I split the app strictly into Server and Client components. The main `page.tsx` is a Server Component that handles fetching the active courses directly from Supabase. I wrapped the data fetching in a React `<Suspense>` boundary to show a skeleton loader while the data loads. For the UI, I built a Bento Grid layout and kept the interactive parts (like the Sidebar and Course Cards) as Client Components so I could use Framer Motion for the animations.
 
-For the UI, I built a responsive Bento Grid layout. To keep the codebase modular, all interactive parts like the `Sidebar`, `CourseCard`, and `ActivityTile` are separate Client Components. This was necessary because they rely heavily on Framer Motion hooks (`useAnimation`, `whileHover`) for hover states and staggered entrance animations.
+### Problems I faced:
+I ran into a weird issue when deploying to Vercel where my `.env` variables weren't being picked up properly, so I had to double-check that they were properly added in the Vercel dashboard. I also struggled a bit with getting the Framer Motion hover animations to feel smooth without breaking the layout, but using strict CSS transforms solved it.
 
-## Challenges Faced
-- **Hydration Mismatches:** I ran into some annoying hydration errors early on because of browser extensions modifying HTML before React loaded. I also had to make sure my mock data for the activity graph was perfectly deterministic so the server and client HTML matched exactly.
-- **Animation Layout Shifts:** Getting the hover animations right without triggering layout reflows was a bit tricky. I solved this by strictly using hardware-accelerated CSS transforms (`scale` and `y` properties) instead of animating heights or margins on the cards.
-
-## Setup Instructions
-1. Clone the repository
+### Setup
+1. Clone the repo
 2. Run `npm install`
-3. Copy `.env.example` to `.env.local` and add your Supabase credentials
-4. Run the SQL script from `supabase-setup.sql` in your Supabase SQL editor
-5. Run `npm run dev`
+3. Copy `.env.example` to `.env.local` and add the Supabase keys
+4. Run `npm run dev`
