@@ -1,36 +1,19 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Student Dashboard Prototype
 
-## Getting Started
+This is my submission for the Student Dashboard intern task. It's built with Next.js (App Router), Tailwind CSS v4, Framer Motion, and Supabase.
 
-First, run the development server:
+## Architecture & Logic
+I split the app strictly into Server and Client components. The main `page.tsx` is a Server Component that handles fetching the active courses directly from Supabase. I wrapped the data fetching in a React `<Suspense>` boundary to show a custom skeleton loader while the data loads.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+For the UI, I built a responsive Bento Grid layout. To keep the codebase modular, all interactive parts like the `Sidebar`, `CourseCard`, and `ActivityTile` are separate Client Components. This was necessary because they rely heavily on Framer Motion hooks (`useAnimation`, `whileHover`) for hover states and staggered entrance animations.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Challenges Faced
+- **Hydration Mismatches:** I ran into some annoying hydration errors early on because of browser extensions modifying HTML before React loaded. I also had to make sure my mock data for the activity graph was perfectly deterministic so the server and client HTML matched exactly.
+- **Animation Layout Shifts:** Getting the hover animations right without triggering layout reflows was a bit tricky. I solved this by strictly using hardware-accelerated CSS transforms (`scale` and `y` properties) instead of animating heights or margins on the cards.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Setup Instructions
+1. Clone the repository
+2. Run `npm install`
+3. Copy `.env.example` to `.env.local` and add your Supabase credentials
+4. Run the SQL script from `supabase-setup.sql` in your Supabase SQL editor
+5. Run `npm run dev`
