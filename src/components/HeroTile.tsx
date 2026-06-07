@@ -21,7 +21,7 @@ export default function HeroTile() {
         >
           <p className="text-sm font-medium text-zinc-400 mb-2">{greeting}</p>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-zinc-50 tracking-tight">
-            Welcome back, Rahul
+            Welcome back, Sudais Khan
           </h1>
           <p className="text-zinc-400 mt-3 text-sm sm:text-base max-w-md leading-relaxed">
             Ready to continue your learning journey? You're doing great this week.

@@ -110,10 +110,10 @@ export default function Sidebar() {
           >
             <div className="flex items-center gap-3 p-3 rounded-xl bg-zinc-900">
               <div className="w-9 h-9 rounded-full bg-zinc-700 flex items-center justify-center text-xs font-bold text-white flex-shrink-0">
-                RS
+                SK
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-zinc-200 truncate">Rahul Sharma</p>
+                <p className="text-sm font-medium text-zinc-200 truncate">Sudais Khan</p>
                 <p className="text-xs text-zinc-500">Student</p>
               </div>
             </div>
@@ -198,10 +198,10 @@ export default function Sidebar() {
               <footer className="p-4 border-t border-zinc-800/50">
                 <div className="flex items-center gap-3 p-3 rounded-xl bg-zinc-800/20">
                   <div className="w-9 h-9 rounded-full bg-zinc-800 flex items-center justify-center text-xs font-bold text-zinc-100">
-                    RS
+                    SK
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-zinc-200 truncate">Rahul Sharma</p>
+                    <p className="text-sm font-medium text-zinc-200 truncate">Sudais Khan</p>
                     <p className="text-xs text-zinc-500">Student</p>
                   </div>
                 </div>
